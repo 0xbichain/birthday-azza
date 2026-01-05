@@ -100,6 +100,20 @@ h2 {
     color: var(--text-primary);
 }
 
+.divider {
+    width: 50px;
+    height: 1px;
+    background: var(--text-secondary);
+    margin: 1.5rem auto;
+}
+
+h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
 .message-body {
     font-size: 1.1rem;
     line-height: 1.6;
@@ -161,170 +175,7 @@ h2 {
         font-size: 2.5rem;
     }
 
-    :root {
-        --bg-color: #fdfbf7;
-        --card-bg: #ffffff;
-        --text-primary: #5d4037;
-        --text-secondary: #8d6e63;
-        --accent: #d7ccc8;
-        --font-heading: 'Cormorant Garamond', serif;
-        --font-body: 'Lato', sans-serif;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        background-color: var(--bg-color);
-        color: var(--text-primary);
-        font-family: var(--font-body);
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-    }
-
-    .container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-    }
-
-    /* Card Styles */
-    .card-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 400px;
-        /* Mobile friendly */
-        height: 600px;
-        perspective: 1000px;
-        z-index: 10;
-    }
-
-    .card {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: var(--card-bg);
-        padding: 2rem;
-        box-shadow: 0 10px 30px rgba(93, 64, 55, 0.05);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        border-radius: 12px;
-        border: 1px solid rgba(0, 0, 0, 0.02);
-        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-    }
-
-    .cover {
-        z-index: 2;
-        transform-origin: left;
-    }
-
-    .inside {
-        z-index: 1;
-        transform: rotateY(0deg);
-    }
-
-    /* Typography */
-    .date {
-        font-size: 0.9rem;
-        letter-spacing: 3px;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-        text-transform: uppercase;
-    }
-
-    h1 {
-        font-family: var(--font-heading);
-        font-size: 3.5rem;
-        font-weight: 600;
-        line-height: 1;
-        margin-bottom: 1rem;
-        color: var(--text-primary);
-    }
-
     h2 {
-        font-family: var(--font-heading);
         font-size: 2rem;
-        margin-bottom: 2rem;
-        color: var(--text-primary);
     }
-
-    .message-body {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-    }
-
-    .signature {
-        font-family: var(--font-heading);
-        font-size: 1.3rem;
-        font-style: italic;
-        color: var(--text-primary);
-    }
-
-    /* Button */
-    .btn-open {
-        margin-top: 3rem;
-        background: transparent;
-        border: 1px solid var(--text-secondary);
-        color: var(--text-secondary);
-        padding: 0.8rem 2.5rem;
-        font-family: var(--font-body);
-        font-size: 0.9rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .btn-open:hover {
-        background: var(--text-secondary);
-        color: white;
-    }
-
-    /* Animation States */
-    .card-wrapper.open .cover {
-        transform: rotateY(-180deg);
-        opacity: 0;
-        /* Ensure it disappears */
-    }
-
-    .card-wrapper.open .inside {
-        z-index: 3;
-    }
-
-    /* Mobile Adjustments */
-    @media (max-width: 600px) {
-        .card-wrapper {
-            height: 80vh;
-            /* Dynamic height */
-            max-height: 600px;
-        }
-
-        .card {
-            padding: 1.5rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-        }
-    }
+}
