@@ -2,45 +2,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const openBtn = document.getElementById('openBtn');
     const cardWrapper = document.querySelector('.card-wrapper');
     const bgMusic = document.getElementById('bgMusic');
-    const musicToggle = document.getElementById('musicToggle');
-    let isPlaying = false;
 
-    function playMusic() {
-        if (!isPlaying) {
-            bgMusic.play().then(() => {
-                isPlaying = true;
-                musicToggle.classList.add('playing');
-                musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-            }).catch(error => {
-                console.log("Audio play failed:", error);
-            });
-        }
-    }
+    // Function to play music
+    const playAudio = () => {
+        bgMusic.play().then(() => {
+            // Remove listeners once played
+            document.removeEventListener('click', playAudio);
+            document.removeEventListener('touchstart', playAudio);
+            document.removeEventListener('scroll', playAudio);
+            document.removeEventListener('mousemove', playAudio);
+        }).catch(err => {
+            console.log("Autoplay prevented, waiting for interaction.");
+        });
+    };
 
-    function toggleMusic() {
-        if (isPlaying) {
-            bgMusic.pause();
-            isPlaying = false;
-            musicToggle.classList.remove('playing');
-            musicToggle.innerHTML = '<i class="fas fa-play"></i>';
-        } else {
-            playMusic();
-        }
-    }
+    // Try to play immediately
+    playAudio();
 
-    // Play on Open Card
+    // Add listeners for any interaction to trigger play
+    document.addEventListener('click', playAudio);
+    document.addEventListener('touchstart', playAudio);
+    document.addEventListener('scroll', playAudio);
+    document.addEventListener('mousemove', playAudio);
+
     openBtn.addEventListener('click', () => {
         cardWrapper.classList.add('open');
-        playMusic();
+        playAudio(); // Ensure it plays on button click too
     });
-
-    // Manual Toggle
-    musicToggle.addEventListener('click', toggleMusic);
-
-    // Try to play on any interaction (fallback)
-    document.body.addEventListener('click', () => {
-        if (!isPlaying) {
-            playMusic();
-        }
-    }, { once: true });
 });
